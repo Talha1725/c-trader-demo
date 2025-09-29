@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cTrader XAUUSD Chart Demo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .chart-container {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>cTrader Chart Demo</h1>
+        <p class="subtitle">Live XAUUSD (Gold) chart powered by cTrader</p>
+        
+        <div class="chart-container">
+            <div class="chart-header">
+                <h2>XAUUSD - Gold vs US Dollar</h2>
+                <span>1 Hour Timeframe</span>
+            </div>
+            
+            <!-- cTrader Widget Code -->
+            <div id="ctrader-plugin-root" style="width: 100%; height: 700px; position: relative"></div>
+            <script id="init" type="text/javascript" defer src="https://ct.spotware.com/widget.js"></script>
+            <script type="text/javascript">
+                const script = document.getElementById('init');
+                
+                script.onload = () => {
+                    putInitScript('runPlugin');
+                    runPlugin('ctrader-plugin-root', {"route":"/market-chart/?s=XAUUSD&period=H1&charttype=candlestick&palettename=dark&lang=en&w=830&h=700"});
+                };
+            </script>
+        </div>
+        
+        <div class="info">
+            <p>This chart is embedded directly from cTrader and provides real-time market data.</p>
+            <p style="margin-top: 10px;">Features: Real-time prices, Technical indicators, Drawing tools, Multiple timeframes</p>
+        </div>
+    </div>
+</body>
+</html>
